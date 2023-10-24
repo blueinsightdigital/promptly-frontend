@@ -11,6 +11,9 @@ function App() {
         <button className="btn btn-primary" onClick={() => setCount((count) => count + 1)}>
           Primary button count is {count}
         </button>
+        <button className="btn btn-danger" onClick={() => setCount(0)}>
+          Reset Count
+        </button>
       </div>
     </>
   )
