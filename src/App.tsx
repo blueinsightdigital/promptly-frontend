@@ -43,7 +43,6 @@ function App() {
           className="btn btn-primary"
           onClick={() => {
             setCount((count) => count + 1);
-            setAlertVisibility(false);
           }}
         >
           Primary button count is {count}
