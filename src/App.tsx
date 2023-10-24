@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 import ListGroup from "./components/ListGroup";
+import Alert from "./components/Alert";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [alertMessage, setAlertMessage] = useState("");
+
   let items = [
     "KitchenAid Mixer not working",
     "Excellent Product in Mixer category",
@@ -11,10 +14,14 @@ function App() {
   ];
 
   const handleSelectItem = (item: string) => {
+    setAlertMessage(item);
     console.log(item);
   };
   return (
     <>
+      <Alert>
+        <span>{alertMessage}</span>
+      </Alert>
       <div className="container py-4 px-3 mx-auto">
         <div>
           <ListGroup
