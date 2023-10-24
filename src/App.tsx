@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
+import axios from "axios";
 
 function App() {
   const [count, setCount] = useState(0);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertVisible, setAlertVisibility] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:80/free-outcome")
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }, [alertVisible]);
 
   let items = [
     "KitchenAid Mixer not working",
