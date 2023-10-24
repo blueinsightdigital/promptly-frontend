@@ -6,6 +6,7 @@ import Alert from "./components/Alert";
 function App() {
   const [count, setCount] = useState(0);
   const [alertMessage, setAlertMessage] = useState("");
+  const [alertVisible, setAlertVisibility] = useState(false);
 
   let items = [
     "KitchenAid Mixer not working",
@@ -15,13 +16,21 @@ function App() {
 
   const handleSelectItem = (item: string) => {
     setAlertMessage(item);
+    setAlertVisibility(true);
     console.log(item);
   };
+
+  const handleClosedAlert = () => {
+    setAlertVisibility(false);
+  };
+
   return (
     <>
-      <Alert>
-        <span>{alertMessage}</span>
-      </Alert>
+      {alertVisible && (
+        <Alert onClose={handleClosedAlert}>
+          <span>{alertMessage}</span>
+        </Alert>
+      )}
       <div className="container py-4 px-3 mx-auto">
         <div>
           <ListGroup
@@ -32,7 +41,10 @@ function App() {
         </div>
         <button
           className="btn btn-primary"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={() => {
+            setCount((count) => count + 1);
+            setAlertVisibility(false);
+          }}
         >
           Primary button count is {count}
         </button>
