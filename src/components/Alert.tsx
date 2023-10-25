@@ -8,7 +8,7 @@ interface Props {
 function Alert({ children, onClose }: Props) {
   return (
     <>
-      <div className="alert alert-primary alert-dismissable">
+      <div className="alert alert-primary alert-dismissable fade show">
         {children}
         <button
           type="button"
